@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     public int CurrentPericia;
 
     // public components!
-    public Rigidbody2D Player;
+    public Rigidbody Player;
     public Button AttackButton;
     public Text ButtonText;
     public Text PericiaText;
@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour
     public string direcao = "direita";
     void Start()
     {
-        Player = gameObject.GetComponent < Rigidbody2D >() as Rigidbody2D;
+        Player = gameObject.GetComponent < Rigidbody >() as Rigidbody;
         CurrentVelocity = BaseVelocity;
     }
 
@@ -50,11 +50,11 @@ public class PlayerScript : MonoBehaviour
         // Update Player Velocity.
         if (direcao == "direita")
         {
-            Player.velocity = new Vector2(CurrentVelocity, Player.velocity.y);
+            Player.velocity = new Vector3(CurrentVelocity, Player.velocity.y,Player.velocity.z);
         }
         else
         {
-            Player.velocity = new Vector2(-CurrentVelocity, Player.velocity.y);
+            Player.velocity = new Vector3(-CurrentVelocity, Player.velocity.y, Player.velocity.z);
         }
 
         //
@@ -63,7 +63,8 @@ public class PlayerScript : MonoBehaviour
         // Exec TickUpdate Routine.
         if (currentTick >= tickUpdate)
         {
-            CurrentVelocity = CurrentVelocity + (CurrentVelocity * BaseMultiplier);
+            if (CurrentVelocity < 7.0f)
+                CurrentVelocity = CurrentVelocity + (CurrentVelocity * BaseMultiplier);
 
             if (CurrentPericia < MaxPericia) CurrentPericia += 1;
 
