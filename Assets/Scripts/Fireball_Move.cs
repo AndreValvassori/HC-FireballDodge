@@ -13,7 +13,7 @@ public class Fireball_Move : MonoBehaviour
         Basevelocity = 1f + Random.Range(0.0f, 1.3f);
         rb = gameObject.GetComponent<Rigidbody>() as Rigidbody;
 
-        float scale = Random.Range(-0.5f, 0.5f);
+        float scale = Random.Range(0f, 0.5f);
         transform.localScale += new Vector3(scale, scale, 0);
     }
 
