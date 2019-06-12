@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fireball_Move : MonoBehaviour
 {
@@ -31,12 +32,24 @@ public class Fireball_Move : MonoBehaviour
         {
             if (collision.transform.tag == "Player")
             {
-                //Kills the player
+                if(MainData.Shields > 0)
+                {
+                    MainData.Shields--;
+                }
+                else if (MainData.GuardianAngels > 0)
+                {
+
+                }
+                else
+                {
+                    SceneManager.LoadScene("GameOver");
+                }
             }
             else
-                    if (collision.transform.tag == "Ground")
+            if (collision.transform.tag == "Ground")
             {
                 Destroy(gameObject);
+                MainData.pontuacao ++;
             }
             else
                     if (collision.transform.tag == "fireball")

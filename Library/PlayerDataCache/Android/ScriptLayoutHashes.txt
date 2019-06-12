@@ -4,6 +4,7 @@ C:/Git/HC_FireballDodge/Binaries/DodgeFireball.apk
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/GameScene.unity
+Assets/Scenes/GameOver.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -88,6 +89,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+ee45b0f3f95de97d8711f861c0f7dd29 Assembly-CSharp.dll:.GameOverScreen
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -116,13 +118,14 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-ad2bfac08dae5a6eecd40ccfdb4fc539 Assembly-CSharp.dll:.PlayerScript
+81188c8c8eb76f868c71b80e756c3435 Assembly-CSharp.dll:.PlayerScript
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MainData
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour

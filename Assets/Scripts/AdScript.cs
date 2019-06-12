@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-            using UnityEngine.Advertisements;
+using UnityEngine.Advertisements;
 
-            public class AdScript : MonoBehaviour
+public class AdScript : MonoBehaviour
 {
     public void ShowRewardedAd()
     {

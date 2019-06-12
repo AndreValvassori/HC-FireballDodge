@@ -8,8 +8,10 @@ public class PlayerScript : MonoBehaviour
     // public variables
     public float BaseVelocity;
     public float BaseMultiplier;
-    public int tickUpdate = 60;
-    public int MaxPericia = 20;
+
+    // private variables
+    private int tickUpdate = 60;
+    private int MaxPericia = 20;
 
     // public Stats variables
     public int CurrentPericia;
@@ -68,7 +70,9 @@ public class PlayerScript : MonoBehaviour
 
             if (CurrentPericia < MaxPericia) CurrentPericia += 1;
 
-            PericiaText.text = ($"Pericia: " +  CurrentPericia.ToString());            
+            PericiaText.text = ($"Pericia: " +  CurrentPericia.ToString());
+
+            MainData.tempo++;
 
             currentTick = 0;
         }
@@ -84,6 +88,13 @@ public class PlayerScript : MonoBehaviour
             direcao = "direita";
         else
             direcao = "esquerda";            
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if(coll.transform.tag == "fireball")
+        {            
+        }
     }
 
 }

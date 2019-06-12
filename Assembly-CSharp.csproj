@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\AdScript.cs" />
     <Compile Include="Assets\Scripts\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\Fireball_Move.cs" />
+    <Compile Include="Assets\Scripts\GameOverScreen.cs" />
+    <Compile Include="Assets\Scripts\MainData.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Wizard.cs" />
     <None Include="Assets\ErbGameArt\Procedural fire\Shaders\FireSphere.shader" />
