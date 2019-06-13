@@ -21,6 +21,8 @@ public class Fireball_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+//        if (MainData.GameRunning == 0)
+//            return;
 
         Vector3 vel = rb.velocity;
         rb.velocity = new Vector3(vel.x, -Basevelocity, vel.z);

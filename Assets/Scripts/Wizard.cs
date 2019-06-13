@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wizard : MonoBehaviour
 {
     public string CurrentAction;
+    public Animator anim;
 
     private Vector3 targetPosition;
 
@@ -72,8 +73,8 @@ public class Wizard : MonoBehaviour
 
     public void Move(string type)
     {
-
-        if(type == "Left")
+        //anim.SetBool("Fire", false);
+        if (type == "Left")
         {
             if(transform.position.x <= -2.0f)
             {
@@ -105,6 +106,7 @@ public class Wizard : MonoBehaviour
 
     public void Fire(int Random)
     {
+        anim.Play("Wizard_Fire");
         CurrentAction = "";
         Debug.Log("Fire");
 

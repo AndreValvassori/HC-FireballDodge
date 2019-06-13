@@ -72,6 +72,8 @@ public class PlayerScript : MonoBehaviour
 
             PericiaText.text = ($"Pericia: " +  CurrentPericia.ToString());
 
+            MainData.GameRunning = 0;
+
             MainData.tempo++;
 
             currentTick = 0;
