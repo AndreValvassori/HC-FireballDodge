@@ -12,11 +12,14 @@ public class PlayerScript : MonoBehaviour
     // private variables
     private int tickUpdate = 60;
     private int MaxPericia = 20;
+    private bool inParede = false;
+    private Animator anim;
 
     // public Stats variables
     public int CurrentPericia;
 
     // public components!
+    public SpriteRenderer skin;
     public Rigidbody Player;
     public Button AttackButton;
     public Text ButtonText;
@@ -31,7 +34,13 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         Player = gameObject.GetComponent < Rigidbody >() as Rigidbody;
+        skin = gameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
+        anim = gameObject.GetComponent<Animator>() as Animator;
+
         CurrentVelocity = BaseVelocity;
+
+        MainData.tempo = 0;
+        MainData.pontuacao = 0;
     }
 
     // Update is called once per frame
@@ -53,10 +62,12 @@ public class PlayerScript : MonoBehaviour
         if (direcao == "direita")
         {
             Player.velocity = new Vector3(CurrentVelocity, Player.velocity.y,Player.velocity.z);
+            skin.flipX = false;
         }
         else
         {
             Player.velocity = new Vector3(-CurrentVelocity, Player.velocity.y, Player.velocity.z);
+            skin.flipX = true;
         }
 
         //
@@ -78,6 +89,9 @@ public class PlayerScript : MonoBehaviour
 
             currentTick = 0;
         }
+
+
+        anim.SetBool("InParede", inParede);
     }
 
     public void ButtonAttackClick()
@@ -94,9 +108,14 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        if(coll.transform.tag == "fireball")
-        {            
-        }
+        if (coll.transform.tag == "Parede")
+            inParede = true;
+    }
+
+    void OnCollisionExit(Collision coll)
+    {
+        if (coll.transform.tag == "Parede")
+            inParede = false;
     }
 
 }

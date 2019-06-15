@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - fireball
   - Wizard
+  - Parede
   layers:
   - Default
   - TransparentFX
