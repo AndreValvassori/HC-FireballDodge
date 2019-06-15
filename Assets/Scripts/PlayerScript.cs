@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
         skin = gameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
         anim = gameObject.GetComponent<Animator>() as Animator;
 
+        Time.timeScale = 1;
+
         CurrentVelocity = BaseVelocity;
 
         MainData.tempo = 0;

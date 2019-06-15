@@ -8,6 +8,10 @@ public class Fireball_Move : MonoBehaviour
     public float Basevelocity;
 
     public Rigidbody rb;
+
+    public GameObject panel;
+    private Canvas pnlcanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,10 @@ public class Fireball_Move : MonoBehaviour
 
         float scale = Random.Range(0f, 0.5f);
         transform.localScale += new Vector3(scale, scale, 0);
+
+        panel = GameObject.Find("canvasPanel");
+        pnlcanvas = panel.GetComponent<Canvas>() as Canvas;
+        Debug.Log(panel.name);
     }
 
     // Update is called once per frame
@@ -44,7 +52,8 @@ public class Fireball_Move : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("GameOver");
+                    pnlcanvas.enabled = true;
+                    Time.timeScale = 0;
                 }
             }
             else

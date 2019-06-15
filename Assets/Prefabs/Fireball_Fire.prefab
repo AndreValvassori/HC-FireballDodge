@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Basevelocity: 0
-  rb: {fileID: 0}
+  rb: {fileID: 32}
+  panel: {fileID: 0}
 --- !u!54 &32
 Rigidbody:
   m_ObjectHideFlags: 0

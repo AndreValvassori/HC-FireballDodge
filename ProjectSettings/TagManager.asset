@@ -8,6 +8,7 @@ TagManager:
   - fireball
   - Wizard
   - Parede
+  - panelGameOver
   layers:
   - Default
   - TransparentFX
