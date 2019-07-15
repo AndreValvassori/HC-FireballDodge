@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecb940cda0ab4748b4ab9126db8067c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 2030976320}
 --- !u!114 &228938426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 310682343}
-        m_MethodName: ShowRewardedAd
+        m_MethodName: ShowRewardedVideo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -598,7 +598,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &310682341
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecb940cda0ab4748b4ab9126db8067c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 2030976320}
 --- !u!1 &385477306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +1971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseVelocity: 2
   BaseMultiplier: 0.01
+  Stopwatch_Pickup: {fileID: 0}
   CurrentPericia: 0
   skin: {fileID: 0}
   Player: {fileID: 1628160747}

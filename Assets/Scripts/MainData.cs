@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Monetization;
 using UnityEngine.Advertisements;
 
 
@@ -18,14 +19,17 @@ public class MainData : MonoBehaviour
     private void Start()
     {
         string gameId = "3157578";
-        bool testMode = false;
+        bool testMode = true;
 
 
         MaxScore = PlayerPrefs.GetInt("MaxScore");
-
+        if (Monetization.isSupported)
+        {
+            Monetization.Initialize(gameId, testMode);
+        }
         Advertisement.Initialize(gameId,testMode);
 
-        //Advertisement.Banner.Hide(true);
+        Advertisement.Banner.Hide(false);
         StartCoroutine(ShowBannerWhenReady());
     }
 

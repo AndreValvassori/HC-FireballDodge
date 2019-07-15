@@ -1,18 +1,46 @@
 ﻿using UnityEngine;
-using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.Monetization;
+using UnityEngine.Advertisements;
 
-public class AdScript : MonoBehaviour
+public class AdScript : MonoBehaviour, IUnityAdsListener
 {
+
+    string gameId = "3157578";
+    string myPlacementId = "rewardedVideo";
+    bool testMode = true;
+    bool alreadydied = false;
+
+
     public GameObject panel;
     private Canvas pnlcanvas;
 
-    public void Start()
+    // Initialize the Ads listener and service:
+    void Start()
     {
         panel = GameObject.Find("canvasPanel");
         pnlcanvas = panel.GetComponent<Canvas>() as Canvas;
-        //panelGameOver = GameObject.Find("panelGameOver");
+
+        if (Monetization.isSupported)
+        {
+            Monetization.Initialize(gameId, testMode);
+        }
+        Advertisement.AddListener(this);
+        Advertisement.Initialize(gameId, testMode);
+    }
+
+    public void ShowRewardedVideo()
+    {
+        if(!alreadydied)
+        {
+            Advertisement.Show(myPlacementId);
+            alreadydied = true;
+        }
+        else
+        {
+            GameOver();
+        }
+
     }
 
     public void GameOver()
@@ -21,34 +49,42 @@ public class AdScript : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
-    public void ShowRewardedAd()
+    // Implement IUnityAdsListener interface methods:
+    public void OnUnityAdsDidFinish(string placementId, UnityEngine.Advertisements.ShowResult showResult)
     {
-        if (Advertisement.IsReady("rewardedVideo"))
+        // Define conditional logic for each ad completion status:
+        if (showResult == UnityEngine.Advertisements.ShowResult.Finished)
         {
-            var options = new ShowOptions { resultCallback = HandleShowResult };
-            Advertisement.Show("rewardedVideo", options);
+            pnlcanvas.enabled = false;
+            Time.timeScale = 1;
+            // Reward the user for watching the ad to completion.
+        }
+        else if (showResult == UnityEngine.Advertisements.ShowResult.Skipped)
+        {
+            // Do not reward the user for skipping the ad.
+        }
+        else if (showResult == UnityEngine.Advertisements.ShowResult.Failed)
+        {
+            Debug.LogWarning("The ad did not finish due to an error");
         }
     }
 
-    private void HandleShowResult(ShowResult result)
+    public void OnUnityAdsReady(string placementId)
     {
-        switch (result)
+        // If the ready Placement is rewarded, show the ad:
+        /*if (placementId == myPlacementId)
         {
-            case ShowResult.Finished:
-                Debug.Log("The ad was successfully shown.");
+            Advertisement.Show(myPlacementId);
+        }*/
+    }
 
+    public void OnUnityAdsDidError(string message)
+    {
+        // Log the error.
+    }
 
-
-                pnlcanvas.enabled = false;
-                Time.timeScale = 1;
-
-                break;
-            case ShowResult.Skipped:
-                Debug.Log("The ad was skipped before reaching the end.");
-                break;
-            case ShowResult.Failed:
-                Debug.LogError("The ad failed to be shown.");
-                break;
-        }
+    public void OnUnityAdsDidStart(string placementId)
+    {
+        // Optional actions to take when the end-users triggers an ad.
     }
 }
