@@ -10,13 +10,14 @@ public class Wizard : MonoBehaviour
     private Vector3 targetPosition;
 
     private int BaseTickUpdate = 10;
-    public int RangeUpdate = 100;
+    public static int RangeUpdate = 100;
     public int TickUpdate;
     public int CurrentTick;
 
     private int frames;
     private int seconds;
 
+    public GameObject cronometro;
     public GameObject Fireball_1;
     public GameObject Fireball_2;
     public GameObject Fireball_3;
@@ -38,7 +39,14 @@ public class Wizard : MonoBehaviour
             seconds++;
             frames = 0;
             RangeUpdate--;
+
+            if (seconds % 7 == 0)
+            {
+                Instantiate(cronometro, 
+                    new Vector3(Random.Range(-2, 2), 6, 1), Quaternion.identity);
+            }
         }
+        
 
 
 

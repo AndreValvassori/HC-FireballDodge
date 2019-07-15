@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
+
 
 public class MainData : MonoBehaviour
 {
@@ -15,7 +17,27 @@ public class MainData : MonoBehaviour
 
     private void Start()
     {
+        string gameId = "3157578";
+        bool testMode = false;
+
+
         MaxScore = PlayerPrefs.GetInt("MaxScore");
-        
+
+        Advertisement.Initialize(gameId,testMode);
+
+        //Advertisement.Banner.Hide(true);
+        StartCoroutine(ShowBannerWhenReady());
     }
+
+    IEnumerator ShowBannerWhenReady()
+    {
+        while (!Advertisement.IsReady("GameBanner"))
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        Advertisement.Banner.Show("GameBanner");
+        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+    }
+
 }

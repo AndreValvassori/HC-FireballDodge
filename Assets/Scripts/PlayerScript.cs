@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     // public variables
     public float BaseVelocity;
     public float BaseMultiplier;
+    public AudioClip Stopwatch_Pickup;
 
     // private variables
     private int tickUpdate = 60;
@@ -33,7 +34,7 @@ public class PlayerScript : MonoBehaviour
     public string direcao = "direita";
     void Start()
     {
-        Player = gameObject.GetComponent < Rigidbody >() as Rigidbody;
+        Player = gameObject.GetComponent<Rigidbody>() as Rigidbody;
         skin = gameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
         anim = gameObject.GetComponent<Animator>() as Animator;
 
@@ -54,7 +55,8 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey("d"))
         {
             direcao = "direita";
-        } else
+        }
+        else
         if (Input.GetKey("a"))
         {
             direcao = "esquerda";
@@ -63,7 +65,7 @@ public class PlayerScript : MonoBehaviour
         // Update Player Velocity.
         if (direcao == "direita")
         {
-            Player.velocity = new Vector3(CurrentVelocity, Player.velocity.y,Player.velocity.z);
+            Player.velocity = new Vector3(CurrentVelocity, Player.velocity.y, Player.velocity.z);
             skin.flipX = false;
         }
         else
@@ -83,7 +85,7 @@ public class PlayerScript : MonoBehaviour
 
             if (CurrentPericia < MaxPericia) CurrentPericia += 1;
 
-            PericiaText.text = ($"Pericia: " +  CurrentPericia.ToString());
+            PericiaText.text = ($"Pericia: " + CurrentPericia.ToString());
 
             MainData.GameRunning = 0;
 
@@ -105,19 +107,34 @@ public class PlayerScript : MonoBehaviour
         if (direcao == "esquerda")
             direcao = "direita";
         else
-            direcao = "esquerda";            
+            direcao = "esquerda";
     }
 
     void OnCollisionEnter(Collision coll)
     {
         if (coll.transform.tag == "Parede")
             inParede = true;
+        if (coll.transform.tag == "cronometro")
+        {
+            CurrentVelocity = CurrentVelocity - (CurrentVelocity * 0.20f);
+            Wizard.RangeUpdate += 20;
+        }
     }
 
     void OnCollisionExit(Collision coll)
     {
         if (coll.transform.tag == "Parede")
             inParede = false;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.tag == "cronometro")
+        {
+            CurrentVelocity = CurrentVelocity - (CurrentVelocity * 0.10f);
+            Wizard.RangeUpdate += 10;
+            AudioSource.PlayClipAtPoint(Stopwatch_Pickup, this.gameObject.transform.position);
+        }
     }
 
 }

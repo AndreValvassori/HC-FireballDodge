@@ -9,6 +9,7 @@ TagManager:
   - Wizard
   - Parede
   - panelGameOver
+  - cronometro
   layers:
   - Default
   - TransparentFX
